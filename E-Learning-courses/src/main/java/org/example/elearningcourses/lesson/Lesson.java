@@ -1,11 +1,11 @@
-package org.example.elearningcourses.lessons;
+package org.example.elearningcourses.lesson;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.example.elearningcourses.courses.Course;
+import org.example.elearningcourses.course.Course;
 import org.example.elearningcourses.EntityBase;
 
 @EqualsAndHashCode(callSuper = true)

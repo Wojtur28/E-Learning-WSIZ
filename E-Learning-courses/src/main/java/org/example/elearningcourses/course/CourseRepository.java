@@ -1,4 +1,4 @@
-package org.example.elearningcourses.courses;
+package org.example.elearningcourses.course;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package org.example.elearningcourses.lessons;
+package org.example.elearningcourses.lesson;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

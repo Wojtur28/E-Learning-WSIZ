@@ -1,4 +1,4 @@
-package org.example.elearningcourses.courses;
+package org.example.elearningcourses.course;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -7,7 +7,7 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.example.elearningcourses.EntityBase;
-import org.example.elearningcourses.lessons.Lesson;
+import org.example.elearningcourses.lesson.Lesson;
 
 import java.util.List;
 

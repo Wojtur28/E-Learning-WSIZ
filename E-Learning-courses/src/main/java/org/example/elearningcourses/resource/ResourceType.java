@@ -1,4 +1,4 @@
-package org.example.elearningcourses.resources;
+package org.example.elearningcourses.resource;
 
 public enum ResourceType {
     VIDEO,

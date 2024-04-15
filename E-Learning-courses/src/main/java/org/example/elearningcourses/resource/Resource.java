@@ -1,10 +1,10 @@
-package org.example.elearningcourses.resources;
+package org.example.elearningcourses.resource;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.example.elearningcourses.EntityBase;
-import org.example.elearningcourses.lessons.Lesson;
+import org.example.elearningcourses.lesson.Lesson;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
