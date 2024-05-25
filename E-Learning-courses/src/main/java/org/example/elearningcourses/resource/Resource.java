@@ -1,5 +1,6 @@
 package org.example.elearningcourses.resource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,6 +20,7 @@ public class Resource extends EntityBase {
     private ResourceType type;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 }
