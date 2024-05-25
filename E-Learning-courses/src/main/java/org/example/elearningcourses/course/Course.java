@@ -1,5 +1,6 @@
 package org.example.elearningcourses.course;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,5 +22,6 @@ public class Course extends EntityBase {
     private String description;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Lesson> lessons;
 }

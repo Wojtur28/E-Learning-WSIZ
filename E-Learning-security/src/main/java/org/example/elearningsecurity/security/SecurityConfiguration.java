@@ -29,14 +29,17 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authenticationProvider(authenticationProvider)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "/courses/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/courses").hasAuthority(RoleType.ADMINISTRATOR.name())
-                        .requestMatchers(HttpMethod.PUT, "/courses/**").hasAuthority(RoleType.ADMINISTRATOR.name())
-                        .requestMatchers(HttpMethod.DELETE, "/courses/**").hasAuthority(RoleType.ADMINISTRATOR.name())
-                        .requestMatchers("/auth/**").permitAll()
-                        .anyRequest().authenticated()
-                )
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers(HttpMethod.GET, "/courses/**", "/lessons/**", "/resources/**", "/auth/**").permitAll();
+                    auth.requestMatchers(HttpMethod.POST, "/courses", "/lessons", "/resources")
+                            .hasAuthority(RoleType.ADMINISTRATOR.name());
+                    auth.requestMatchers(HttpMethod.PUT, "/courses/**", "/lessons/**", "/resources/**")
+                            .hasAuthority(RoleType.ADMINISTRATOR.name());
+                    auth.requestMatchers(HttpMethod.DELETE, "/courses/**", "/lessons/**", "/resources/**")
+                            .hasAuthority(RoleType.ADMINISTRATOR.name());
+                    auth.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
+                    auth.anyRequest().authenticated();
+                })
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
