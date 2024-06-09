@@ -38,4 +38,9 @@ public class ResourceService {
     public void deleteResource(UUID resourceId) {
         resourceRepository.deleteById(resourceId);
     }
+
+    public List<Resource> getResourcesByLesson(UUID lessonId) {
+        return resourceRepository.findByLessonId(lessonId);
+    }
+
 }

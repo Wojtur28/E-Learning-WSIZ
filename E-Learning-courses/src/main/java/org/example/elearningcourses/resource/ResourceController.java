@@ -26,6 +26,14 @@ public class ResourceController {
         return jwtService.isTokenValid(token, userDetails);
     }
 
+    @GetMapping("/lessons/{lessonId}")
+    public List<Resource> getResourcesByLesson(@PathVariable UUID lessonId, @RequestHeader("Authorization") String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ") || !verifyToken(authHeader.substring(7))) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid JWT Token");
+        }
+        return resourceService.getResourcesByLesson(lessonId);
+    }
+
     @GetMapping("/{resourceId}")
     public Resource getResourceById(@PathVariable UUID resourceId, @RequestHeader("Authorization") String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ") || !verifyToken(authHeader.substring(7))) {
