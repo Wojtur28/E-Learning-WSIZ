@@ -51,11 +51,12 @@ public class ResourceController {
     }
 
     @PostMapping
-    public Resource saveResource(@RequestBody Resource resource, @RequestHeader("Authorization") String authHeader) {
+    public Resource saveResource(@RequestParam UUID lessonId, @RequestBody Resource resource, @RequestHeader("Authorization") String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ") || !verifyToken(authHeader.substring(7))) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid JWT Token");
         }
-        return resourceService.saveResource(resource);
+        System.out.println(lessonId);
+        return resourceService.saveResource(resource, lessonId);
     }
 
     @PutMapping("/{resourceId}")

@@ -1,6 +1,8 @@
 package org.example.elearningcourses.resource;
 
 import lombok.AllArgsConstructor;
+import org.example.elearningcourses.lesson.Lesson;
+import org.example.elearningcourses.lesson.LessonRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,8 @@ public class ResourceService {
 
     private final ResourceRepository resourceRepository;
 
+    private final LessonRepository lessonRepository;
+
     public Resource getResourceById(UUID resourceId) {
         return resourceRepository.findById(resourceId)
                 .orElseThrow(() -> new IllegalStateException("Resource not found"));
@@ -21,7 +25,11 @@ public class ResourceService {
         return resourceRepository.findAll();
     }
 
-    public Resource saveResource(Resource resource) {
+    public Resource saveResource(Resource resource, UUID lessonId) {
+        Lesson lesson = lessonRepository.findById(lessonId)
+                .orElseThrow(() -> new IllegalStateException("Lesson not found"));
+
+        resource.setLesson(lesson);
         return resourceRepository.save(resource);
     }
 
